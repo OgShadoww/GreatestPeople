@@ -1,38 +1,158 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind utilities;
+@tailwind variants;
+@import url('https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Lato:wght@100;300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lancelot&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-color: #04040C;
+  width: 100%;
+  height: 100%;
+  color: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo {
+  font-family: 'Julius Sans One';
+}
+.lato {
+  font-family: 'Lato';
+}
+.lancelot {
+  font-family: 'Lancelot';
+}
+.person-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden; /* Hide overflow content */
+  transition: width 0.5s ease-in-out; /* Smooth transition for width */
+  width: 55px;
+  height: 71px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.selected {
+  width: 130px; /* Change to desired width when selected */
+  height: 71px;
+}
+.abeezee {
+  font-family: 'ABeeZee';
+}
+.search {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1400;
+  background: rgba(0,0,0,.6);
+  transition: .4s;
+}
+.search-suggestions {
+  max-height: calc(100vh - 92px);
+  overflow-y: auto;
+  background-color: #0D1118;
+  transition: .5s;
+}
+.media-card-caption {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, .8), rgba(0, 0, 0, .01));
+  border-radius: 0 0 4px 4px;
+  bottom: 0;
+  color: #fff;
+  color: var(--white);
+  left: 0;
+  overflow: hidden;
+  padding: 45px 5px 5px;
+  position: absolute;
+  text-shadow: 0 1px rgba(0,0,0,.7);
+  width: 100%;
+  padding-bottom: 20px;
+}
+.tippy {
+  background-color: rgb(19 23 34 / var(--tw-bg-opacity));
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+  color: #fff;
+  margin: 0;
+  pointer-events: auto;
+  position: absolute;
+  text-align: left;
+  transition: .25s;
+  z-index: 1000;
+}
+.control-input {
+  opacity: 0;
+  position: absolute;
+  visibility: hidden;
+  z-index: -1;
+}
+.control-input:checked+span {
+  align-items: center;
+  background: #40abe9;
+  border: 1px solid #40abe9;
+  display: flex;
+  justify-content: center;
+}
+.control-indicator {
+  cursor: pointer;
+  flex-shrink: 0;
+  height: 16px;
+  position: relative;
+  transition: .15s ease;
+  width: 16px;
+}
+.control-indicator:after {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  bottom: -1px;
+  content: "";
+  left: -1px;
+  opacity: 0;
+  position: absolute;
+  right: -1px;
+  top: -1px;
+  transition: opacity .15s ease, -webkit-transform .15s ease;
+}
+.control-input:checked+span:after {
+  background-image: url(https://ogshadoww.github.io/ranobe-lib/static/media/circle.6fdc41d43aba9240af04.png);
+  /* background-image: url(/frontend/src/img/circle.png); */
+  border-radius: 50%;
+  opacity: 1;
+  -webkit-transform: scale(.4);
+  transform: scale(.4);
+}
+.catalog-card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-grow: 1;
+  margin: 0 8px;
+  max-width: calc(20% - 16px); /* Adjust margin to maintain 4-5 items per row */
+  text-decoration: none;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media(max-width:768px) {
+  .person-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden; /* Hide overflow content */
+    transition: width 0.5s ease-in-out; /* Smooth transition for width */
+    width: 50px;
+    height: 62px;
   }
-  to {
-    transform: rotate(360deg);
+  .selected {
+    width: 100px; /* Change to desired width when selected */
+    height: 62px;
+  }
+  .search-suggestions {
+    overflow-y: auto;
+    background-color: #0D1118;
+    transition: .5s;
+    max-height: 90vh;
   }
 }
