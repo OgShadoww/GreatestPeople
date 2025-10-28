@@ -1,4 +1,6 @@
-# Frontend of project about greatest people of all hitory
+# 🌍 GreatestPeople
+Full-stack web application built by Orest Halenza.  
+The project includes a **frontend (TypeScript/React)** and a **backend (Rust)** for maximum performance and reliability.
 
 ## Preview
 <img width="1440" alt="Image" src="https://github.com/user-attachments/assets/9e92f261-3e74-436f-ac85-fe9f158f49d1" />   
@@ -11,6 +13,32 @@
 
 ---
 
-## Next step in project: 
--Complete function of adding new person
--Finish backend
+## 🧱 Project Structure
+
+| Folder | Description |
+|:--------|:-------------|
+| `/frontend` | The client-side app built with TypeScript and modern web tools |
+| `/backend` | Rust-based backend API using Axum or Actix-web |
+
+---
+
+## ⚙️ Tech Stack
+
+**Frontend:** React, TypeScript, Tailwind, API integration  
+**Backend:** Rust (Axum/Actix), Serde, SQLx or Diesel for DB  
+**Database:** PostgreSQL or SQLite  
+**Auth:** JWT or session-based (to be decided)
+
+---
+
+## 🧩 Development
+
+```bash
+# Run frontend
+cd frontend
+npm install
+npm run dev
+
+# Run backend
+cd ../backend
+cargo run
